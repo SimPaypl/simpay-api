@@ -1,4 +1,4 @@
-package pl.edu.tirex.payservices.utils;
+package pl.edu.tirex.simpay.api.utils;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonSyntaxException;

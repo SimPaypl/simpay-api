@@ -1,7 +1,7 @@
-package pl.edu.tirex.payservices.connection;
+package pl.edu.tirex.simpay.api.connection;
 
-import pl.edu.tirex.payservices.models.SimpayStatusParameters;
-import pl.edu.tirex.payservices.models.SimpayStatusRespond;
+import pl.edu.tirex.simpay.api.models.SimpayStatusParameters;
+import pl.edu.tirex.simpay.api.models.SimpayStatusRespond;
 
 public class SimpayStatusResponse extends SimpayResponse<SimpayStatusRespond, SimpayStatusParameters>
 {

@@ -1,17 +1,17 @@
-package pl.edu.tirex.payservices.models;
+package pl.edu.tirex.simpay.api.models;
 
 import com.google.gson.annotations.SerializedName;
 
 public class SimpayStatusRespond
 {
     private final String code;
-    private final String status;
-    private final boolean test;
+    private final SimpayStatus status;
+    private final int test;
 
     @SerializedName("time_used")
     private final long timeUsed;
 
-    public SimpayStatusRespond(String code, String status, boolean test, long timeUsed)
+    public SimpayStatusRespond(String code, SimpayStatus status, int test, long timeUsed)
     {
         this.code = code;
         this.status = status;
@@ -24,18 +24,24 @@ public class SimpayStatusRespond
         return code;
     }
 
-    public String getStatus()
+    public SimpayStatus getStatus()
     {
         return status;
     }
 
     public boolean isTest()
     {
-        return test;
+        return test == 1;
     }
 
     public long getTimeUsed()
     {
         return timeUsed;
+    }
+
+    @Override
+    public String toString()
+    {
+        return "SimpayStatusRespond{" + "code='" + code + '\'' + ", status='" + status + '\'' + ", test=" + test + ", timeUsed=" + timeUsed + '}';
     }
 }

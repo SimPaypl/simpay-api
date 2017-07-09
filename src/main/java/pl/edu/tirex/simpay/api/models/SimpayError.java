@@ -1,4 +1,4 @@
-package pl.edu.tirex.payservices.models;
+package pl.edu.tirex.simpay.api.models;
 
 import com.google.gson.annotations.SerializedName;
 
@@ -48,5 +48,11 @@ public class SimpayError
     public void setValue(String value)
     {
         this.value = value;
+    }
+
+    @Override
+    public String toString()
+    {
+        return "SimpayError{" + "code=" + code + ", name='" + name + '\'' + ", value='" + value + '\'' + '}';
     }
 }

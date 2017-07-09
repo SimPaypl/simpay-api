@@ -1,7 +1,7 @@
-package pl.edu.tirex.payservices.connection;
+package pl.edu.tirex.simpay.api.connection;
 
 import com.google.gson.annotations.SerializedName;
-import pl.edu.tirex.payservices.models.SimpayError;
+import pl.edu.tirex.simpay.api.models.SimpayError;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -32,5 +32,11 @@ public class SimpayRequest<P>
     public List<SimpayError> getErrors()
     {
         return errors;
+    }
+
+    @Override
+    public String toString()
+    {
+        return "SimpayRequest{" + "errors=" + errors + ", parameters=" + parameters + '}';
     }
 }

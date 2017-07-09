@@ -1,4 +1,4 @@
-package pl.edu.tirex.payservices.models;
+package pl.edu.tirex.simpay.api.models;
 
 import com.google.gson.annotations.SerializedName;
 
@@ -57,5 +57,11 @@ public class SimpayStatusParameters
     public void setCode(String code)
     {
         this.code = code;
+    }
+
+    @Override
+    public String toString()
+    {
+        return "SimpayStatusParameters{" + "auth=" + auth + ", serviceId=" + serviceId + ", number=" + number + ", code='" + code + '\'' + '}';
     }
 }

@@ -1,4 +1,4 @@
-package pl.edu.tirex.payservices.models;
+package pl.edu.tirex.simpay.api.models;
 
 public class SimpayAuth
 {
@@ -29,5 +29,11 @@ public class SimpayAuth
     public void setSecret(String secret)
     {
         this.secret = secret;
+    }
+
+    @Override
+    public String toString()
+    {
+        return "SimpayAuth{" + "key='" + key + '\'' + ", secret='" + secret + '\'' + '}';
     }
 }
