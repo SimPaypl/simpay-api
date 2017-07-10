@@ -1,6 +1,6 @@
 package pl.edu.tirex.simpay.api.models;
 
-public enum SimpayStatus
+public enum SimpayStatusType
 {
     OK,
     USED;

@@ -5,13 +5,13 @@ import com.google.gson.annotations.SerializedName;
 public class SimpayStatusRespond
 {
     private final String code;
-    private final SimpayStatus status;
+    private final SimpayStatusType status;
     private final int test;
 
     @SerializedName("time_used")
     private final long timeUsed;
 
-    public SimpayStatusRespond(String code, SimpayStatus status, int test, long timeUsed)
+    public SimpayStatusRespond(String code, SimpayStatusType status, int test, long timeUsed)
     {
         this.code = code;
         this.status = status;
@@ -24,7 +24,7 @@ public class SimpayStatusRespond
         return code;
     }
 
-    public SimpayStatus getStatus()
+    public SimpayStatusType getStatus()
     {
         return status;
     }

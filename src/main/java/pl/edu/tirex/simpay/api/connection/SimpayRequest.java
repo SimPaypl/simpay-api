@@ -29,14 +29,18 @@ public class SimpayRequest<P>
         this.parameters = parameters;
     }
 
-    public List<SimpayError> getErrors()
+    public SimpayError getError()
     {
-        return errors;
+        return this.errors.size() < 1 ? null : this.errors.get(0);
     }
 
     @Override
     public String toString()
     {
-        return "SimpayRequest{" + "errors=" + errors + ", parameters=" + parameters + '}';
+        final StringBuilder sb = new StringBuilder("SimpayRequest{");
+        sb.append("parameters=").append(parameters);
+        sb.append(", error=").append(getError());
+        sb.append('}');
+        return sb.toString();
     }
 }

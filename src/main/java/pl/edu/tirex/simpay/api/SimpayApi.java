@@ -7,7 +7,6 @@ import pl.edu.tirex.simpay.api.connection.SimpayStatusRequest;
 import pl.edu.tirex.simpay.api.connection.SimpayStatusResponse;
 import pl.edu.tirex.simpay.api.models.SimpayAuth;
 import pl.edu.tirex.simpay.api.models.SimpayStatusParameters;
-import pl.edu.tirex.simpay.api.models.SimpayStatusRespond;
 import pl.edu.tirex.simpay.api.utils.JsonEntity;
 import pl.edu.tirex.simpay.api.utils.PayServiceUtils;
 
@@ -17,8 +16,7 @@ import java.io.InputStreamReader;
 public class SimpayApi
 {
     private static final int SIMPAY_API_VERSION = 1;
-    private final String key;
-    private final String secret;
+    private final SimpayAuth auth;
     private final int version;
 
     public SimpayApi(String key, String secret)
@@ -28,19 +26,13 @@ public class SimpayApi
 
     public SimpayApi(String key, String secret, int version)
     {
-        this.key = key;
-        this.secret = secret;
+        this.auth = new SimpayAuth(key, secret);
         this.version = version;
     }
 
-    public String getKey()
+    public SimpayAuth getAuth()
     {
-        return key;
-    }
-
-    public String getSecret()
-    {
-        return secret;
+        return auth;
     }
 
     public int getVersion()
@@ -48,10 +40,9 @@ public class SimpayApi
         return version;
     }
 
-    public SimpayStatusRespond getStatus(int serviceId, int number, String code) throws IOException
+    public SimpayStatusResponse getStatus(int serviceId, int number, String code) throws IOException
     {
-        SimpayAuth auth = new SimpayAuth(this.key, this.secret);
-        SimpayStatusParameters parameters = new SimpayStatusParameters(auth, serviceId, number, code);
+        SimpayStatusParameters parameters = new SimpayStatusParameters(this.auth, serviceId, number, code);
         SimpayStatusRequest statusRequest = new SimpayStatusRequest(parameters);
 
         HttpClient httpClient = PayServiceUtils.getHttpClient();
@@ -60,10 +51,8 @@ public class SimpayApi
         post.setEntity(new JsonEntity(statusRequest));
 
         HttpResponse httpResponse = httpClient.execute(post);
-
         SimpayStatusResponse statusResponse = PayServiceUtils.getGson().fromJson(new InputStreamReader(httpResponse.getEntity().getContent()), SimpayStatusResponse.class);
 
-        System.out.println(statusResponse);
-        return null;
+        return statusResponse;
     }
 }
